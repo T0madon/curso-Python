@@ -22,6 +22,7 @@ pessoa = {
 # print('Values',list(pessoa.values()))
 # print('items', list(pessoa.items()))
 pessoa.setdefault('idade', 0)
+print('teste')
 print(pessoa['idade'])
 
 
