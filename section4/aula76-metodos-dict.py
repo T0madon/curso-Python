@@ -22,9 +22,9 @@ pessoa = {
 # print('Values',list(pessoa.values()))
 # print('items', list(pessoa.items()))
 pessoa.setdefault('idade', 0)
-print('teste')
 print(pessoa['idade'])
 
+print('\nPARTE 2\n')
 
 #  Exemplo de uso
 # for item in pessoa:
@@ -32,3 +32,24 @@ print(pessoa['idade'])
 
 # for chave, valor in pessoa.items():
 #     print(chave + ' : ' + valor)
+
+p1 = {
+    'nome': 'Tomate',
+    'sobrenome': 'da sal',
+}
+
+print(p1.get('nome'))
+
+# nome = p1.pop('nome')
+# print(f'{nome} foi excluído\n{p1}')
+
+# sobrenome = p1.popitem()
+# print(sobrenome)
+# print(p1)
+
+p1.update({
+    'nome': 'novo valor',
+    'idade': 30 
+})
+
+print(p1)
