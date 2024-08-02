@@ -15,3 +15,19 @@ perguntas = [
         'Resposta': '5',
     },
 ]
+
+# # print(perguntas)
+# print(perguntas[0])
+# print(perguntas[0]['Opções'])
+
+vetor = ['1', '2', '3', '4']
+
+for item in enumerate(vetor):
+    print(item)
+# for pergunta in perguntas:
+#     # print(pergunta)
+#     print(f'Pergunta: {pergunta['Pergunta']}\n\nOpções:\n')
+#     for i,option in perguntas[0]['Opções']:
+#         print(i,option) 
+    
+
