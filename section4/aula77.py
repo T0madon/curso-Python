@@ -16,18 +16,17 @@ perguntas = [
     },
 ]
 
-# # print(perguntas)
-# print(perguntas[0])
-# print(perguntas[0]['Opções'])
-
-vetor = ['1', '2', '3', '4']
-
-for item in enumerate(vetor):
-    print(item)
-# for pergunta in perguntas:
-#     # print(pergunta)
-#     print(f'Pergunta: {pergunta['Pergunta']}\n\nOpções:\n')
-#     for i,option in perguntas[0]['Opções']:
-#         print(i,option) 
-    
+for pergunta in perguntas:
+    print(f'Pergunta: {pergunta['Pergunta']}\n\nOpções:')
+    for i,option in enumerate(pergunta['Opções']):
+        print(f'{i}) {option}') 
+    try:
+        i_user_answer = int(input('Escola uma opção: '))
+        f_user_answer = pergunta['Opções'][i_user_answer]
+        if f_user_answer == pergunta['Resposta']:
+            print('Acertou! Parabéns!!\n')
+        else:
+            print('Errooooooou!! ZERO!!\n')
+    except:
+        print('Errooooooou!! ZERO!!\n')
 
