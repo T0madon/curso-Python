@@ -29,4 +29,3 @@ for pergunta in perguntas:
             print('Errooooooou!! ZERO!!\n')
     except:
         print('Errooooooou!! ZERO!!\n')
-
