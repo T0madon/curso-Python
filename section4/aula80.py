@@ -39,37 +39,4 @@ def first_num(vet):
         return -1
 
 for lista in lista_de_listas_de_inteiros:
-    print(first_num(lista))
-
-
-
-
-
-#RASCUNHOOOO
-# soma = 0
-    # conj = list(set(vet))
-    # res = []
-    # fc = []
-    # # vet  -> vetor em questão
-    # # conj -> vetor com os únicos números que aparecem
-    # # res  -> vetor com as diferenças entre second e first case para cada num
-    # # fc   -> vetor com os first cases de cada num do conj
-    # for i in range(len(conj)):
-    #     res.append(0)
-    #     first_case = None
-    #     second_case = None
-    #     for j in range(len(vet)):
-            
-    #         if conj[i] == vet[j] and first_case != None:
-    #             second_case = j
-    #             res[i] = second_case - first_case
-    #             break
-    #         if conj[i] == vet[j] and first_case == None:
-    #             first_case = j
-    #             fc.append(j)
-
-    # for elem in res:
-    #     soma += elem
-    # if soma == 0:
-    #     return -1
-    
+    print(lista, first_num(lista))
