@@ -1,10 +1,7 @@
 from itertools import zip_longest
 
 def soma_lista(l1,l2):
-    indice = min(len(l1), len(l2))
-    return [
-        l1[i] + l2[i] for i in range(indice)
-    ]
+    return [l1[i] + l2[i] for i in range(min(len(l1), len(l2)))]
 
 la = [1,2,3,4,5,6,7]
 lb = [1,2,3,4]
