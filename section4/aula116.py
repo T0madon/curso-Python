@@ -1,3 +1,5 @@
+import os
+
 # Criando arquivos com Python + Context Manager with
 # with open (context manager) e métodos úteis do TextIOWrapper
 # Usamos a função open para abrir
@@ -54,3 +56,6 @@ with open(caminho_arquivo, 'w', encoding='utf-8') as arquivo:
     arquivo.writelines(
         ('Linha 3\n', 'Linha 4\n')
     )
+
+# os.remove(caminho_arquivo)
+#os.rename(caminho_arquivo, "aula116-rename.txt")
