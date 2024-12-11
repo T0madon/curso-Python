@@ -1,5 +1,5 @@
 import os
-import copy
+import json
 # Exercício - Lista de tarefas com desfazer e refazer
 # Música para codar =)
 # Everybody wants to rule the world - Tears for fears
@@ -59,6 +59,13 @@ while(True):
         comandos['adicionar']
     
     instruct()
+
+    with open('aula119.json', 'w+', encoding='utf8') as arquivo:
+        json.dump(
+            todo,
+            arquivo,
+            indent=2,
+        )
     
     # if comando == "listar":
     #     listar(todo)
