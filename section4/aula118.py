@@ -6,9 +6,13 @@ def add_cliente(nome, lista=None):
     lista.append(nome)
     return lista
 
-cliente1 = add_cliente('Luiz')
+cliente1 = []
 add_cliente('Joana', cliente1)
 add_cliente('Adriana', cliente1)
+
+nome = input('Insira um nome: ')
+print(nome)
+add_cliente(nome, cliente1)
 print(cliente1)
 
 cliente2 = add_cliente('João')

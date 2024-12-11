@@ -1,5 +1,5 @@
 import json
-#caminho_arquivo = '.\\section4\\aula116.txt'
+# caminho_arquivo = '.\\section4\\aula116.txt'
 
 # pessoa = {
 #     'nome': 'Luiz Otávio',
