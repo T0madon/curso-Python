@@ -46,23 +46,36 @@ def adiciona(item, lista):
 while(True):
     print('\nComandos: listar, desfazer, refazer, cls, exit')
     comando = input("Digite uma tarefa ou comando: ")
+
+    comandos = {
+        'listar': lambda: listar(todo),
+        'desfazer': lambda: desfazer(todo, lista_refazer),
+        'refazer': lambda: refazer(todo, lista_refazer),
+        'clear': lambda: os.system("cls"),
+        'adicionar': lambda: adiciona(comando, todo)
+    }
+
+    instruct = comandos.get(comando) if comandos.get(comando) is not None else \
+        comandos['adicionar']
     
-    if comando == "listar":
-        listar(todo)
+    instruct()
     
-    elif comando == "desfazer":
-        desfazer(todo, lista_refazer)
-        listar(todo)
+    # if comando == "listar":
+    #     listar(todo)
+    
+    # elif comando == "desfazer":
+    #     desfazer(todo, lista_refazer)
+    #     listar(todo)
 
-    elif comando == "refazer":
-        refazer(todo, lista_refazer)
-        listar(todo)
+    # elif comando == "refazer":
+    #     refazer(todo, lista_refazer)
+    #     listar(todo)
 
-    elif comando == "cls":
-        os.system("cls")
+    # elif comando == "cls":
+    #     os.system("cls")
 
-    else:
-        adiciona(comando, todo)
+    # else:
+    #     adiciona(comando, todo)
         
 
     
