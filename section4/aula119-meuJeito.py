@@ -12,8 +12,21 @@ import json
 # refazer = todo ['fazer café', 'caminhar']
 x=1
 
-todo = []
-lista_refazer = []
+def ler(tarefas, caminho_file):
+    dados = []
+    try:
+        with open(caminho_file, 'r', encoding='utf8') as arquivo:
+            dados = json.load(arquivo)
+    except FileNotFoundError:
+        print('Arquivo não existe')
+        salvar(tarefas, caminho_file)
+    return dados
+
+def salvar(tarefas, caminho_file):
+    dados = tarefas
+    with open(caminho_file, 'w', encoding='utf8') as arquivo:
+        dados = json.dump(tarefas, arquivo, indent=2, ensure_ascii=False)
+    return dados
 
 def listar(tarefas):
     print("\nTAREFAS:")
@@ -43,6 +56,10 @@ def adiciona(item, lista):
         return
     lista.append(item)
 
+CAMINHO = "aula119.json"
+todo = ler([],CAMINHO)
+lista_refazer = []
+
 while(True):
     print('\nComandos: listar, desfazer, refazer, cls, exit')
     comando = input("Digite uma tarefa ou comando: ")
@@ -57,16 +74,12 @@ while(True):
 
     instruct = comandos.get(comando) if comandos.get(comando) is not None else \
         comandos['adicionar']
-    
     instruct()
+    salvar(todo, CAMINHO)
 
-    with open('aula119.json', 'w+', encoding='utf8') as arquivo:
-        json.dump(
-            todo,
-            arquivo,
-            indent=2,
-        )
     
+    # OUTRO JEITO
+
     # if comando == "listar":
     #     listar(todo)
     
