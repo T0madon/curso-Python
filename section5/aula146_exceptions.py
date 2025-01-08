@@ -16,6 +16,7 @@ class OutroError(Exception):
 
 def levantar():
     exception_ = MeuError('a', 'b', 'c') 
+    exception_.add_note('Olha nota 1')
     raise exception_
 
 
