@@ -34,6 +34,13 @@ class MyOpen:
         print('Fechando arquivo')
         self._arquivo.close()
 
+        # raise class_exception(*exception_.args).with_traceback(traceback_)
+        # print(class_exception)
+        # print(exception_)
+        # print(traceback_)
+        # exception_.add_note('Minha nota')
+        # return True  # Tratei a exceção
+
 
 with MyOpen('aula149.txt', 'w') as arquivo:
     arquivo.write('Linha 1\nLinha 2\nLinha 3')
