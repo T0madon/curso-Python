@@ -15,7 +15,6 @@
 # Sobreposição de métodos (override) 🐍 = ✅
 from abc import ABC, abstractmethod
 
-
 class Notificacao(ABC):
     def __init__(self, mensagem):
         self.mensagem = mensagem
@@ -23,18 +22,15 @@ class Notificacao(ABC):
     @abstractmethod
     def enviar(self) -> bool: ...
 
-
 class NotificacaoEmail(Notificacao):
     def enviar(self) -> bool:
         print('E-mail: enviando - ', self.mensagem)
         return True
 
-
 class NotificacaoSMS(Notificacao):
     def enviar(self) -> bool:
         print('SMS: enviando - ', self.mensagem)
         return False
-
 
 def notificar(notificacao: Notificacao):
     notificacao_enviada = notificacao.enviar()
@@ -43,7 +39,6 @@ def notificar(notificacao: Notificacao):
         print('Notificação enviada')
     else:
         print('Notificação NÃO enviada')
-
 
 notificacao_email = NotificacaoEmail('testando e-mail')
 notificar(notificacao_email)
