@@ -19,6 +19,11 @@ class Conta(ABC):
         print(f'{msg}\nO seu saldo é de R${self.balance:.2f} ')
         print('-----------')
 
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        attrs = f'({self.agency!r}, {self.number!r}, {self.balance!r})'
+        return f'{class_name}{attrs}'
+
 class ContaCorrente(Conta):
     def __init__(self, agency: int, number: int, balance=0, lim=0):
         super().__init__(agency, number, balance)
@@ -34,6 +39,11 @@ class ContaCorrente(Conta):
         print(f'Não foi possível sacar o valor de R${value}')
         self.details()
         return self.balance
+    
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        attrs = f'({self.agency!r}, {self.number!r}, {self.balance!r}, {self.lim!r})'
+        return f'{class_name}{attrs}'
 
 
 class ContaPoupanca(Conta):

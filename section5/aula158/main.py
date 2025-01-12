@@ -6,7 +6,7 @@ possa sacar/depositar nessa conta. Contas corrente tem um limite extra.
 Conta (ABC)
     ContaCorrente
     ContaPoupanca
-Pessoa (ABC)
+Pessoa ()
     Cliente
         Clente -> Conta
 Banco
@@ -24,7 +24,7 @@ Criar classes ContaPoupanca e ContaCorrente que herdam de Conta
     polimorfismo - as subclasses que implementam o método sacar)
 Criar classe Banco para AGREGAR classes de clientes e de contas (Agregação)
 Banco será responsável autenticar o cliente e as contas da seguinte maneira:
-    Banco tem contas e clentes (Agregação)
+    Banco tem contas e clientes (Agregação)
     * Checar se a agência é daquele banco
     * Checar se o cliente é daquele banco
     * Checar se a conta é daquele banco

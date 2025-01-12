@@ -1,4 +1,4 @@
-from conta import ContaCorrente, ContaPoupanca
+from conta import ContaCorrente, ContaPoupanca, Conta
 
 class Pessoa:
     def __init__(self, name: str, age: int) -> None:
@@ -15,22 +15,27 @@ class Pessoa:
     
     @property
     def age(self):
-        return self.age
+        return self._age
     
     @age.setter
     def age(self, value: int):
         self._age = value
+
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        attrs = f'({self.name!r}, {self.age!r})'
+        return f'{class_name}{attrs}'
     
 class Cliente(Pessoa):
     def __init__(self, name: str, age: int) -> None:
         super().__init__(name, age)
-        self.account = []
+        self.account: Conta | None = None
 
-    def add_cc(self, cc: ContaCorrente):
-        self.account[0] = cc 
+if __name__ == '__main__':
+    c1 = Cliente('João', 30)
+    c1.account = ContaCorrente(123, 321, 100, 1000)
 
-    def add_cp(self, cp: ContaPoupanca):
-        self.account[1] = cp 
-
+    print(c1)
+    print(c1.account)
 
     
