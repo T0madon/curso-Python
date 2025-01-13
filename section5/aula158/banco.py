@@ -8,13 +8,8 @@ class Banco:
         self._accounts = [] # Conta
         self._agencies = [] #
 
-    def add_user(self, user) -> None:
-        self._users.append(user)
-    
-    def show_users(self) -> None:
-        print(f'Usuários {type(self).__name__}:')
-        for user in self._users:
-            print(f'({user.name}, {user.age})')
+    def check(self):
+        ...
 
     def add(self, attr):
         clas = type(attr).__name__
@@ -27,17 +22,52 @@ class Banco:
             return
         self._agencies.append(attr)
 
-    def show(self, attr):
-        clas = type(attr).__name__
-        
+    def show_users(self) -> None:
+        print(f'Usuários {self.bank}:')
+        for user in self._users:
+            print(f'({user.name}, {user.age})')
+
+    def show_accounts(self) -> None:
+        print(f'Contas existentes:')
+        for acc in self._accounts:
+            if (type(acc).__name__ == 'ContaPoupanca'):
+                print(f'Agência: {acc.agency} # Número: {acc.number} '
+                f'  # Saldo {acc.balance}')
+            else:
+                print(f'Agência: {acc.agency} # Número: {acc.number} '
+                f'  # Saldo {acc.balance} # Limite: {acc.lim}')    
+
 
 if __name__ == '__main__':
 
     bb = Banco('Banco do Brasil')
-    c1 = Cliente('João', 20)
-    cc1 = ContaCorrente(123, 321, 1000, 10)
 
+    # Add agências
+    bb.add(123)
+    bb.add(432)
+    bb.add(123)
+
+    # Clientes
+    c1 = Cliente('João', 20)
+    c2 = Cliente('Pedro', 19)
+    c3 = Cliente('Sara', 34)
+
+    # Contas
+    cc1 = ContaCorrente(123, 321, 1000, 10)
+    cp2 = ContaPoupanca(432, 100, 500)
+    cc3 = ContaCorrente(123, 547, 700, 500)
+
+    # Add clientes e mostrando
     bb.add(c1)
+    bb.add(c2)
+    bb.add(c3)
+    # bb.show_users()
+
+    # Add contas e mostrando
+    bb.add(cc1)
+    bb.add(cp2)
+    bb.add(cc3)
+    bb.show_accounts()
 
 
 
