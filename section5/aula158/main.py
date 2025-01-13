@@ -1,3 +1,6 @@
+from bancos import Banco
+from conta import Conta, ContaCorrente, ContaPoupanca
+from pessoa import Cliente
 """
 Exercício com Abstração, Herança, Encapsulamento e Polimorfismo
 Criar um sistema bancário (extremamente simples) que tem clientes, contas e
@@ -31,3 +34,32 @@ Banco será responsável autenticar o cliente e as contas da seguinte maneira:
 Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
+
+
+bb = Banco('Banco do Brasil')
+
+# Add agências
+bb.add(123)
+bb.add(432)
+
+# Clientes
+c1 = Cliente('João', 20)
+c2 = Cliente('Pedro', 19)
+c3 = Cliente('Sara', 34)
+ 
+# Contas
+cc1 = ContaCorrente(123, 321, 1000, 10)
+cp2 = ContaPoupanca(432, 100, 500)
+cc3 = ContaCorrente(124, 547, 700, 500)
+
+# Add clientes e mostrando
+bb.add(c1)
+bb.add(c2)
+bb.add(c3)
+# bb.show_users()
+
+# Add contas e mostrando
+bb.add(cc1)
+bb.add(cp2)
+bb.add(cc3)
+bb.show_accounts()

@@ -14,6 +14,35 @@ class Banco:
         self._accounts = accounts or [] 
         self._agencies = agencies or []
 
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        attrs = f'({self._agencies!r}, {self._users!r}, {self._accounts!r})'
+        return f'{class_name}{attrs}'
+    
+    # Métodos para autenticação
+
+    def _check_agency(self, agency):
+        if agency.agency in self._agencies:
+            return True
+        return False
+
+    def _check_account(self, account):
+        if account in self._accounts:
+            return True
+        return False
+
+    def _check_user(self, user):
+        if user in self._users:
+            return True
+        return False
+
+    def authenticate(self, account, user):
+        return self._check_account(account) and \
+            self._check_agency(account) and \
+            self._check_user(user)
+    
+    # Método dinâmico para add coisas no banco
+
     def add(self, attr):
         clas = type(attr).__name__
 
@@ -25,6 +54,8 @@ class Banco:
             self._accounts.append(attr)
             return
         self._agencies.append(attr)
+
+    # Mostrar informações do banco
 
     def show_users(self) -> None:
         print(f'Usuários {self.bank}:')
@@ -41,38 +72,8 @@ class Banco:
                 print(f'Agência: {acc.agency} # Número: {acc.number} '
                 f'  # Saldo {acc.balance} # Limite: {acc.lim}')    
 
-    def check(self):
-        ...
+    
 
-if __name__ == '__main__':
-
-    bb = Banco('Banco do Brasil')
-
-    # Add agências
-    bb.add(123)
-    bb.add(432)
-
-    # Clientes
-    c1 = Cliente('João', 20)
-    c2 = Cliente('Pedro', 19)
-    c3 = Cliente('Sara', 34)
-
-    # Contas
-    cc1 = ContaCorrente(123, 321, 1000, 10)
-    cp2 = ContaPoupanca(432, 100, 500)
-    cc3 = ContaCorrente(124, 547, 700, 500)
-
-    # Add clientes e mostrando
-    bb.add(c1)
-    bb.add(c2)
-    bb.add(c3)
-    # bb.show_users()
-
-    # Add contas e mostrando
-    bb.add(cc1)
-    bb.add(cp2)
-    bb.add(cc3)
-    bb.show_accounts()
 
 
 
