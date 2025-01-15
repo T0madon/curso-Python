@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from banco import Banco
+from section5.aula158.bancos import Banco
 
 class Conta(ABC):
     def __init__(self, agency: int, number: int, balance: float =0) -> None :
