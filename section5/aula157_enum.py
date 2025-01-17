@@ -39,3 +39,4 @@ mover(Direcoes.DIREITA)
 mover(Direcoes.ACIMA)
 mover(Direcoes.ABAIXO)
 mover(Direcoes.ESQUERDA)
+
