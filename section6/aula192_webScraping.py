@@ -15,7 +15,7 @@ url = 'http://localhost:3333/'
 response = requests.get(url)
 
 raw_html = response.text
-parsed_html = BeautifulSoup(raw_html, 'html.parser')
+parsed_html = BeautifulSoup(raw_html, 'html.parser', from_encoding='utf-8')
 
 # if parsed_html is not None:
 #     print(parsed_html.article.p)
