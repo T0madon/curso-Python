@@ -16,7 +16,7 @@ def make_chrome_browser(*options: str) -> webdriver.Chrome:
     # chrome_options.add_argument('--headless')
     if options is not None:
         for option in options:
-            chrome_options.add_argument(option)  # type: ignore
+            chrome_options.add_argument(option)
 
     chrome_service = Service(
         executable_path=str(CHROME_DRIVER_PATH),
@@ -41,11 +41,18 @@ if __name__ == '__main__':
             (By.NAME, 'q')
         )
     )
+
     search_input.send_keys('Hello World')
     search_input.send_keys(Keys.ENTER)
 
-    
-    results = browser.find_element(By.ID, 'search')
+    results = WebDriverWait(browser, TIME_TO_WAIT).until(
+        EC.presence_of_element_located(
+            (By.ID, 'search')
+        )
+    )
+
+    # results = browser.find_element(By.ID, 'search')
+
     print(results)
     
     print('Falha')
