@@ -19,6 +19,22 @@ cursor.execute(
 )
 connection.commit()
 
+cursor.execute(
+    f'DELETE FROM {TABLE_NAME}'
+)
+
+cursor.execute(
+    f'DELETE FROM sqlite_sequence WHERE name="{TABLE_NAME}"'
+)
+
+cursor.execute(
+    f'INSERT INTO {TABLE_NAME} '
+    '(id, name, weight) '
+    'VALUES '
+    '(NULL, "João Vitor", 80), (NULL, "Rodolfo Rodríguez", 75)'
+    )
+connection.commit()
+
 cursor.close()
 connection.close()
 
