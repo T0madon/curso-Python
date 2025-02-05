@@ -14,7 +14,7 @@ cursor.execute(
     '('
     'id INTEGER PRIMARY KEY AUTOINCREMENT,'
     'name TEXT,'
-    'weight REAL'
+    'weight REAL' 
     ')'
 )
 connection.commit()
@@ -48,8 +48,36 @@ cursor.executemany(sql, (
 
 connection.commit()
 
-cursor.close()
-connection.close()
 
 if __name__ == '__main__':
     print(sql)
+
+    cursor.execute(
+        f'DELETE FROM {TABLE_NAME} '
+        'WHERE id = "3"'
+    )
+    cursor.execute(
+        f'DELETE FROM {TABLE_NAME} '
+        'WHERE id = 1'
+    )
+    connection.commit()
+
+    cursor.execute(
+        f'UPDATE {TABLE_NAME} '
+        'SET name="QLQR VALOR", weight=33.3 '
+        'WHERE id = 2'
+    )
+    connection.commit()
+
+    cursor.execute(
+    f'SELECT * FROM {TABLE_NAME}'
+    )
+
+    for row in cursor.fetchall():
+        _id, name, weight = row
+        print(_id, name, weight)
+
+    cursor.close()
+    connection.close()
+
+    
