@@ -27,14 +27,29 @@ cursor.execute(
     f'DELETE FROM sqlite_sequence WHERE name="{TABLE_NAME}"'
 )
 
-cursor.execute(
+sql = (
     f'INSERT INTO {TABLE_NAME} '
-    '(id, name, weight) '
+    '(name, weight) '
     'VALUES '
-    '(NULL, "João Vitor", 80), (NULL, "Rodolfo Rodríguez", 75)'
-    )
+    '(:nome, :peso)'
+)
+
+# cursor.execute(sql, ['João', 70.6])
+# cursor.executemany(sql, [['João', 70.6], ['Trombeta', 90.9]])
+# print(sql)
+
+cursor.execute(sql, {'nome': 'Buiu', 'peso': 80})
+cursor.executemany(sql, (
+    {'nome': 'Joãozinho', 'peso': 3},
+    {'nome': 'Maria', 'peso': 2},
+    {'nome': 'Helena', 'peso': 4},
+    {'nome': 'Joana', 'peso': 5},
+))
+
 connection.commit()
 
 cursor.close()
 connection.close()
 
+if __name__ == '__main__':
+    print(sql)
