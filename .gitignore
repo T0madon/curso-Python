@@ -6,6 +6,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+mysql_206
 
 # C extensions
 *.so
