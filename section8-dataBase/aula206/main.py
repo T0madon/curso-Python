@@ -97,6 +97,7 @@ with connection:
         data4 = (
             ("Siri", 22, ),
             ("Helena", 15, ),
+            ("Luiz", 18, ),
         )
         result = cursor.executemany(sql, data4)  # type: ignore
         # print(sql)
@@ -106,11 +107,46 @@ with connection:
 
     # Lendo os valores com SELECT
     with connection.cursor() as cursor:
+        # menor_id = int(input('Digite o menor id: '))
+        # maior_id = int(input('Digite o maior id: '))
+        menor_id = 2
+        maior_id = 4
+
         sql = (
             f'SELECT * FROM {TABLE_NAME} '
+            'WHERE id BETWEEN %s AND %s  '
         )
-        cursor.execute(sql)  # type: ignore
-        data5 = cursor.fetchall()  # type: ignore
+        cursor.execute(sql, (menor_id, maior_id)) 
+        data5 = cursor.fetchall() 
 
-        for row in data5:
+        # for row in data5:
+        #     print(row)
+
+    # Apagando com DELETE, WHERE e placeholders no PyMySQL
+    with connection.cursor() as cursor:
+        sql = (
+            f'DELETE FROM {TABLE_NAME} '
+            'WHERE id = %s'
+        )
+        cursor.execute(sql, (1,))
+
+        connection.commit()
+        cursor.execute(f'SELECT * FROM {TABLE_NAME} ')  
+        
+        # for row in cursor.fetchall():  
+        #     print(row)
+
+    # Editando com UPDATE, WHERE e placeholders no PyMySQL
+    with connection.cursor() as cursor:
+        sql = (
+            f'UPDATE {TABLE_NAME} '
+            'SET nome=%s, idade=%s '
+            'WHERE id=%s'
+        )
+        cursor.execute(sql, ('Eleonor', 102, 4))  
+        cursor.execute(f'SELECT * FROM {TABLE_NAME} ')
+
+        for row in cursor.fetchall():  
             print(row)
+            
+    connection.commit()
