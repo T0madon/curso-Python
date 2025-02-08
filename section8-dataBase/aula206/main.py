@@ -71,7 +71,7 @@ with connection:
         # print(result)
     connection.commit()
 
-    # Inserindo vários valores usando placeholder e um tupla de dicionários
+    # Inserindo vários valores usando placeholder e uma tupla de dicionários
     with connection.cursor() as cursor:
         sql = (
             f'INSERT INTO {TABLE_NAME} '
@@ -84,10 +84,7 @@ with connection:
             {"name": "Júlia", "age": 74, },
             {"name": "Rose", "age": 53, },
         )
-        result = cursor.executemany(sql, data3)  # type: ignore
-        # print(sql)
-        # print(data3)
-        # print(result)
+        result = cursor.executemany(sql, data3)
     connection.commit()
 
     # Inserindo vários valores usando placeholder e um tupla de tuplas
@@ -103,10 +100,7 @@ with connection:
             ("Helena", 15, ),
             ("Luiz", 18, ),
         )
-        result = cursor.executemany(sql, data4)  # type: ignore
-        # print(sql)
-        # print(data4)
-        # print(result)
+        result = cursor.executemany(sql, data4)  
     connection.commit()
 
     # Lendo os valores com SELECT
